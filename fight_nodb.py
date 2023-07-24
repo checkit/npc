@@ -111,7 +111,7 @@ async def fight(interaction: nextcord.Interaction, opponent: nextcord.User):
     embed.add_field(name="Loser", value=(opponent if winner == interaction.user else interaction.user).mention, inline=True)
     embed.set_footer(text=f"{winner.name} has won the battle against {(opponent if winner == interaction.user else interaction.user).name} and also won **{points}** fight points. | {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
-    await interaction.response.send_message(embed=embed)
+    await interaction.followup.send(embed=embed)
 
     logging.info(f"A fight occurred between {interaction.user.name} and {opponent.name}. Outcome: {outcome}")
 
