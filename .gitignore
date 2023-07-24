@@ -1,0 +1,7 @@
+# .gitignore file
+
+# Ignore .env file
+.env
+
+# Ignore old_utils directory
+/old_utils/
