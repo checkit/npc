@@ -99,18 +99,18 @@ async def fight(interaction: nextcord.Interaction, opponent: nextcord.User):
     outcome = random.choice(outcomes)
     outcome = outcome.format(user=interaction.user.name, opponent=opponent.name)
 
-    # Add coins to the winner
-    coins = random.randint(1, 35)
+    # Add points to the winner
+    points = random.randint(1, 35)
 
     # Call the function to award the badge
-    award_badge(winner.id, coins)
+    award_badge(winner.id, points)
 
     embed = nextcord.Embed(title="Battle Outcome", description=outcome, color=nextcord.Color.from_rgb(204, 255, 0))
     embed.set_author(name=interaction.user.name, icon_url=interaction.user.avatar.url)
     embed.set_image(url="https://media.discordapp.net/attachments/1131268787417649282/1131325436048179260/gartherly_an_anime_illustration_of_two_warriors_preparing_to_fi_aafcc47d-e79b-44ba-b864-fea89e649ed9.png?width=1620&height=908")
     embed.add_field(name="Winner", value=winner.mention, inline=True)
     embed.add_field(name="Loser", value=(opponent if winner == interaction.user else interaction.user).mention, inline=True)
-    embed.set_footer(text=f"{winner.name} has won the battle against {(opponent if winner == interaction.user else interaction.user).name} and also won **{coins}** fight coins. | {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    embed.set_footer(text=f"{winner.name} has won the battle against {(opponent if winner == interaction.user else interaction.user).name} and also won **{points}** fight points. | {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     await interaction.followup.send(embed=embed)
 
